@@ -74,6 +74,7 @@ class Interceptor extends EventEmitter {
    * @returns {void}
    */
   connect = (instance) => {
+    const emit = this.emit;
     instance.interceptors.request.use((request) => {
       // Build request log
       const requestLog = {
@@ -96,7 +97,7 @@ class Interceptor extends EventEmitter {
       }
 
       // Emit the request
-      this.emit('request', this._type('request'), {
+      emit('request', this._type('request'), {
         request: requestLog,
       });
 
@@ -120,7 +121,7 @@ class Interceptor extends EventEmitter {
       };
 
       // Log Request Error
-      this.emit('requestError', this._type('request.error'), {
+      emit('requestError', this._type('request.error'), {
         error: requestErrorLog,
       });
 
@@ -148,7 +149,7 @@ class Interceptor extends EventEmitter {
       };
 
       // Log Response
-      this.emit('response', this._type('response'), {
+      emit('response', this._type('response'), {
         response: responseLog,
       });
 
@@ -191,7 +192,7 @@ class Interceptor extends EventEmitter {
       };
 
       // Log Response Errors
-      this.emit('responseError', this._type('response.error'), {
+      emit('responseError', this._type('response.error'), {
         error: responseErrorLog,
       });
 
