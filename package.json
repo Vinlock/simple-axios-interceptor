@@ -1,0 +1,28 @@
+{
+  "name": "simple-axios-interceptor",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Dak Washbrook",
+    "url": "https://dak.dev"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-dynamic-import-node": "^2.3.0"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist/*",
+    "build": "babel -d ./dist ./src --source-maps inline --ignore '**/*.test.js' --copy-files",
+    "test": "jest"
+  }
+}
