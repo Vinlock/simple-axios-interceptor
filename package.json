@@ -1,5 +1,5 @@
 {
-  "name": "simple-axios-interceptor",
+  "name": "simple-axios-interceptors",
   "version": "1.0.2",
   "main": "dist/index.js",
   "license": "MIT",

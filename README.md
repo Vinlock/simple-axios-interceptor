@@ -1,12 +1,12 @@
-# Axios Interceptors
+# Simple Axios Interceptors
 
 ## Installation
 ```bash
 # With Yarn
-yarn add simple-axios-interceptor
+yarn add simple-axios-interceptors
 
 # With NPM
-npm install simple-axios-interceptor
+npm install simple-axios-interceptors
 ```
 
 ## Usage
