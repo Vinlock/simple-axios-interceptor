@@ -1,7 +1,15 @@
 import EventEmitter from 'events';
 
+/**
+ * @class Interceptor
+ */
 class Interceptor extends EventEmitter {
-  constructor(instance, label = null) {
+  /**
+   * Interceptor Constructor
+   * @constructor
+   * @param {String} label
+   */
+  constructor(label = null) {
     super();
     this.label = label;
   }
@@ -16,26 +24,55 @@ class Interceptor extends EventEmitter {
     return `${this.label}.${logType}`;
   };
 
+  /**
+   * Request Event Listener
+   * @function
+   * @param {function} callback Request Callback
+   * @returns {Interceptor}
+   */
   onRequest = (callback) => {
     this.addListener('request', callback);
     return this;
   };
 
+  /**
+   * Request Error Event Listener
+   * @function
+   * @param {function} callback Request Error Callback
+   * @returns {Interceptor}
+   */
   onRequestError = (callback) => {
     this.addListener('requestError', callback);
     return this;
   };
 
+  /**
+   * Response Event Listener
+   * @function
+   * @param {function} callback Response Callback
+   * @returns {Interceptor}
+   */
   onResponse = (callback) => {
     this.addListener('response', callback);
     return this;
   };
 
+  /**
+   * Response Error Event Listener
+   * @function
+   * @param {function} callback Response Error Callback
+   * @returns {Interceptor}
+   */
   onResponseError = (callback) => {
     this.addListener('responseError', callback);
     return this;
   };
 
+  /**
+   * Connect Axios Instance to Interceptors
+   * @param {Object} instance Axios Instance
+   * @returns {void}
+   */
   connect = (instance) => {
     instance.interceptors.request.use((request) => {
       // Build request log
@@ -164,6 +201,12 @@ class Interceptor extends EventEmitter {
   };
 }
 
+/**
+ *
+ * @param {Object} instance Axios Instance
+ * @param {String} label Label
+ * @returns {Interceptor}
+ */
 const connect = (instance, label = null) => {
   const interceptor = new Interceptor(label);
   interceptor.connect(instance);
