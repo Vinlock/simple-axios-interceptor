@@ -1,1 +1,3 @@
-export connect from './AxiosInterceptors';
+import connect from './AxiosInterceptors';
+
+export default connect;
